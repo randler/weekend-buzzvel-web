@@ -100,18 +100,16 @@
             var longitude = document.getElementById("longitude");
 
             var url = "{{ route('hotels.index') }}";
-            url += "?";
-            url += "lat=" + latitude.value;
-            url += "&lng=" + longitude.value;
+            url += "/" + latitude.value;
+            url += "/" + longitude.value;
 
             window.location.href = url;
         }
 
         function showAutoHotels() {
             var url = "{{ route('hotels.index') }}";
-            url += "?";
-            url += "lat=" + lat.innerHTML;
-            url += "&lng=" + lng.innerHTML;
+            url += "/" + lat.innerHTML;
+            url += "/" + lng.innerHTML;
 
             window.location.href = url;
 

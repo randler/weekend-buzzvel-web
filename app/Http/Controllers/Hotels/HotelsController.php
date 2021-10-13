@@ -20,6 +20,8 @@ class HotelsController extends Controller
         $my_lng = $lng;
         $orderBy = $orderBy;
 
+        //dd($my_lat, $my_lng, $orderBy);
+
         $my_loc = array(
             'lat' => $my_lat,
             'lng' => $my_lng
