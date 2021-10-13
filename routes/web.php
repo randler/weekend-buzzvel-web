@@ -14,7 +14,7 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/hotels', [HotelsController::class, 'index'])->name('hotels.index');
+Route::get('/hotels/{lat?}/{lng?}/{orderBy?}', [HotelsController::class, 'index'])->name('hotels.index');
 Route::post('/search', [HotelsController::class, 'search'])->name('hotels.search');
 Route::get('/', function () {
     return view('home.index');

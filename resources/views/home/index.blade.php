@@ -25,25 +25,21 @@
                 <!-- link to show hotels -->
                 <div class="text-white">
                     <h4>
-                        <a href="{{ route('hotels.index') }}">Show Hotels</a>
+                        <button onclick="showAutoHotels()" class="btn btn-primary ">Show Hotels <i class="far fa-search"></i></button>
                     </h4>
                 </div>
 
             </div>
             <div id="form-geo" class="mb-5 mt-5 hide">
-                <form action="{{ route('hotels.search') }}" method="post">
-                    @csrf
-                    <div class="form-group">
-                        <label class="text-white" for="latitude">Latitude</label>
-                        <input type="text" class="form-control" id="latitude" name="latitude" placeholder="Latitude">
-                    </div>
-                    <div class="form-group">
-                        <label class="text-white" for="longitude">Longitude</label>
-                        <input type="text" class="form-control" id="longitude" name="longitude" placeholder="Longitude">
-                    </div>
-                    <button type="submit" class="btn btn-primary ">Search <i class="far fa-paper-plane"></i></button>
-                </form>
-
+                <div class="form-group">
+                    <label class="text-white" for="latitude">Latitude</label>
+                    <input type="text" class="form-control" id="latitude" name="latitude" placeholder="Latitude">
+                </div>
+                <div class="form-group">
+                    <label class="text-white" for="longitude">Longitude</label>
+                    <input type="text" class="form-control" id="longitude" name="longitude" placeholder="Longitude">
+                </div>
+                <button onclick="showHotels()" class="btn btn-primary ">Search <i class="far fa-paper-plane"></i></button>
             </div>
         </div>
     </div>
@@ -56,9 +52,6 @@
         var form = document.getElementById("form-geo");
         var lat = document.getElementById("auto-lat");
         var lng = document.getElementById("auto-lng");
-
-        var auto_lat = document.getElementById("auto-latitude");
-        var auto_lng = document.getElementById("auto-longitude");
 
         function toogleGeoDisplay(isGeolocation) {
             if (isGeolocation) {
@@ -100,8 +93,28 @@
         function showPosition(position) {
             lat.innerHTML = "" + position.coords.latitude;
             lng.innerHTML = "" +  position.coords.longitude;
-            auto_lat.value = "" +  position.coords.latitude;
-            auto_lng.value = "" +  position.coords.longitude;
+        }
+
+        function showHotels() {
+            var latitude = document.getElementById("latitude");
+            var longitude = document.getElementById("longitude");
+
+            var url = "{{ route('hotels.index') }}";
+            url += "?";
+            url += "lat=" + latitude.value;
+            url += "&lng=" + longitude.value;
+
+            window.location.href = url;
+        }
+
+        function showAutoHotels() {
+            var url = "{{ route('hotels.index') }}";
+            url += "?";
+            url += "lat=" + lat.innerHTML;
+            url += "&lng=" + lng.innerHTML;
+
+            window.location.href = url;
+
         }
 
         window.onload = getLocation;

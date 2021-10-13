@@ -82,7 +82,7 @@
             <i class="icon ion-md-locate"></i>
             <span>Order by proximity</span>
         </div>
-        <div class="icon-right icons active">
+        <div class="icon-right icons">
             <i class="icon ion-md-cash"></i>
             <span>Order by cash</span>
         </div>

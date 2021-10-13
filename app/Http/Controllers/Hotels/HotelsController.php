@@ -10,11 +10,15 @@ use WeekBuzz\Search;
 class HotelsController extends Controller
 {
 
-    public function index()
+    public function index(
+        $lat = "-18.242962801334816",
+        $lng = "-43.599337060160344",
+        $orderBy =  "proximity"
+    )
     {
-        $my_lat = "-18.242962801334816";
-        $my_lng = "-43.599337060160344";
-        $orderBy = "proximity";
+        $my_lat = $lat;
+        $my_lng = $lng;
+        $orderBy = $orderBy;
 
         $my_loc = array(
             'lat' => $my_lat,
